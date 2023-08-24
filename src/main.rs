@@ -62,11 +62,9 @@ async fn main() {
     env::var("RELAYER_ADMIN_API_KEY").expect("RELAYER_ADMIN_API_KEY must be set");
     env::var("ENVIRONMENT").expect("ENVIRONMENT must be set");
 
-    let mut interval = interval(Duration::from_secs(10));
+    let mut interval = interval(Duration::from_secs(5));
     loop {
         interval.tick().await;
-        // Call your function here
-        println!("Executing function every 10 seconds");
         trigger_merkle_tree_finalization().await;
     }
 }
